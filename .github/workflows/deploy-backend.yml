@@ -1,0 +1,46 @@
+name: Deploy Backend to Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main      # Despliegue a producción
+      - develop   # Despliegue a staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Obtener el código del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Configurar Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      # 3. Instalar dependencias del backend
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt
+
+      # 4. Empaquetar la aplicación en un archivo ZIP
+      - name: Package application
+        run: |
+          cd backend
+          zip -r ../backend.zip .
+
+      # 5. Desplegar a Elastic Beanstalk
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          application_name: AUSTRALIANPROJECT-BACKEND
+          environment_name: ${{ github.ref_name == 'main' && 'backend-production' || 'backend-staging' }}
+          region: us-east-1
+          version_label: ${{ github.sha }}
+          deployment_package: backend.zip
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AKIA34AMCTAZZ5FDPCKZ }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YqOR9zyKlvLjbwB915THjOH5wShidU+kemv+OrMc }}
