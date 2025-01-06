@@ -8,4 +8,4 @@ router = APIRouter(prefix="/users",
 
 @router.post("/register")
 def register_user(user: User):
-    return {"message": "User registered successfully"}
+    return {"message": "User registered successfully XD"}
