@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status
-from db.models.users import User
+from users.db.models.users import User
 
 
 router = APIRouter(prefix="/users", 
