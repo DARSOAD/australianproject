@@ -35,14 +35,15 @@ jobs:
       # 4.5. Debug de los secretos para verificar si están configurados correctamente
       - name: Debug secrets
         run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}"
+          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
+          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
 
       # 5. Desplegar a Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
         with:
           application_name: AUSTRALIANPROJECT-BACKEND
-          environment_name: ${{ github.ref_name == 'main' && 'backend-production' || 'backend-staging' }}
+          environment_name: ${{ github.ref_name == 'main' ? 'backend-production' : 'backend-staging' }}
           region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: backend.zip
