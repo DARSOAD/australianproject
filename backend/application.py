@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.users.main import app as users_app
+from users.main import app as users_app
 # from orders.main import app as orders_app
 # from subscriptions.main import app as subscriptions_app
 # from catalog.main import app as catalog_app
