@@ -43,7 +43,7 @@ jobs:
         uses: einaregilsson/beanstalk-deploy@v20
         with:
           application_name: AUSTRALIANPROJECT-BACKEND
-          environment_name: ${{ github.ref_name == 'main' ? 'backend-production' : 'backend-staging' }}
+          environment_name: ${{ github.ref_name == 'main' && 'backend-production' || 'backend-staging' }}
           region: us-east-2
           version_label: ${{ github.sha }}
           deployment_package: backend.zip
