@@ -32,12 +32,6 @@ jobs:
           cd backend
           zip -r ../backend.zip .
 
-       # 4.5. Debug de los secretos para verificar si están configurados correctamente
-       - name: Debug secrets
-       run: |
-         echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}"
-         echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-
       # 5. Desplegar a Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v20
