@@ -7,5 +7,5 @@ router = APIRouter(prefix="/users",
                 responses={status.HTTP_404_NOT_FOUND:{"message":"No encontrado"}})
 
 @router.post("/register")
-def register_user(user: User):
+async def register_user(user: User):
     return {"message": "User registered successfully XD"}
