@@ -1,4 +1,4 @@
 from fastapi import FastAPI
-from users.routers import users
+from catalog.routers import catalog
 
 app = FastAPI()

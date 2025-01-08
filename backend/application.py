@@ -1,8 +1,4 @@
 from fastapi import FastAPI, Request
-from users.main import app as users_app
-# from orders.main import app as orders_app
-# from subscriptions.main import app as subscriptions_app
-# from catalog.main import app as catalog_app
 
 app = FastAPI()
 
@@ -15,10 +11,17 @@ async def inicio(request: Request):
         }
 
 # Registrar las rutas de todos los microservicios
-app.mount("/users", users_app)  # Rutas de usuarios
-# app.mount("/orders", orders_app)  # Rutas de pedidos
-# app.mount("/subscriptions", subscriptions_app)  # Rutas de suscripciones
-# app.mount("/catalog", catalog_app)  # Rutas de catálogo
+from users.routers import users  # Importa directamente el router de usuarios
+app.include_router(users.router, prefix="/users")  # Agrega las rutas bajo el prefijo "/users"
+
+from orders.routers import orders  # Importa directamente el router de orders
+app.include_router(orders.router, prefix="/orders")  # Agrega las rutas bajo el prefijo "/orders"
+
+from subscriptions.routers import subscriptions  # Importa directamente el router de orders
+app.include_router(subscriptions.router, prefix="/subscriptions")  # Agrega las rutas bajo el prefijo "/orders"
+
+from catalog.routers import catalog  # Importa directamente el router de orders
+app.include_router(catalog.router, prefix="/catalog")  # Agrega las rutas bajo el prefijo "/orders"
 
 if __name__ == "__main__":
     import uvicorn
