@@ -10,7 +10,7 @@ app = FastAPI()
 async def inicio(request: Request):
     base_url = str(request.base_url)
     return {
-        "description":'La url de la documentación es la siguiente',
+        "description":'La url de la documentación es la siguiente: Copia y pega el link',
         "url": f"{base_url}docs"
         }
 
