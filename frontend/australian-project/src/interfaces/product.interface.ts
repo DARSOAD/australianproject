@@ -14,3 +14,10 @@ export interface Product {
 export type Category = 'men'|'women'|'kid'|'unisex';
 export type Size = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
 export type ValidType = 'shirts'|'pants'|'hoodies'|'hats';
+
+export interface user{
+    email: string;
+    password:string;
+    name:string;
+    role: 'admin'|'user'
+}
