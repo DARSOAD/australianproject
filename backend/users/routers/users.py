@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Optional, Dict
 import uuid
 
+
 router = APIRouter(tags=["users"],
                 responses={status.HTTP_404_NOT_FOUND:{"message":"No encontrado"}})
 
