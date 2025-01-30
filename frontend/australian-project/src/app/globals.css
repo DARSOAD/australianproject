@@ -5,8 +5,9 @@
 :root {
   --primary: #274494;
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  background-color: #f8f8f8;
+  /* --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255; */
 }
 /* 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +27,7 @@ body {
       )
       rgb(var(--background-end-rgb))
 }
+
 
 
 
@@ -50,8 +52,21 @@ body {
 }
 
 
+
+.btn-custom {
+  background-color: #06b030;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #059f29; /* Un color ligeramente más oscuro para el hover */
+}
+
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+  @apply bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded-full transition-all;
 }
 
 .btn-secondary {

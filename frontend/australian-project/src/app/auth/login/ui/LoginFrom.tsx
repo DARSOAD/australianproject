@@ -36,7 +36,7 @@ export const LoginFrom = () => {
                     </>
                 )}
             </div>
-            <button
+            {/* <button
                 disabled={isPending}
                 type='submit'
                 className={clsx({
@@ -44,7 +44,22 @@ export const LoginFrom = () => {
                     'btn-disabled ': isPending,
                 })}>
                 Ingresar
+            </button> */}
+            <button
+                disabled={isPending}
+                
+                className={clsx({
+                    'btn-primary': !isPending,
+                    'btn-disabled ': isPending,
+                })}>
+                <Link
+                href="/"
+                >
+                Ingresar
+            </Link>
             </button>
+            
+
 
             {/* <Button className="mt-4 w-full" aria-disabled={isPending}>
           Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />

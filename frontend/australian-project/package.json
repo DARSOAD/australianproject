@@ -9,8 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/checkbox": "^2.3.8",
+    "@heroui/radio": "^2.3.8",
+    "@heroui/react": "^2.6.13",
+    "@heroui/system": "^2.4.6",
+    "@heroui/tabs": "^2.2.7",
+    "@heroui/theme": "^2.4.5",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.18.1",
     "next": "15.1.3",
     "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
