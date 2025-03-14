@@ -4,27 +4,31 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import React, { useActionState } from 'react'
 import { IoInformationOutline } from 'react-icons/io5'
+import { useState } from "react"
 
 export const LoginFrom = () => {
     const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined,);
-
-    console.log({ errorMessage });
-    console.log({ isPending });
+    const [formData, setFormData] = useState({
+        name: "Tonynguyen",
+        email: "cuonght@gmail.com",
+        phone: "0452209186",
+        address: "004 Riley Street, 2050 Sydney, Australia",
+        password: "********",
+    });
 
 
     return (
-        <form action={formAction} className="flex flex-col">
-
-            <label htmlFor="email">Correo electrónico</label>
+        <form action={formAction} className="flex flex-col space-y-5">
             <input
-                className="px-5 py-2 border bg-gray-200 rounded mb-5"
-                type="email"
-                name='email' />
-
-
-            <label htmlFor="email">Contraseña</label>
+                placeholder='Your email or phone'
+                className='input-primary'
+                type="text"
+                name='contact'
+                pattern="^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+|\+?[0-9]{7,15})$"
+                required />
             <input
-                className="px-5 py-2 border bg-gray-200 rounded mb-5"
+                placeholder='Your password'
+                className='input-primary'
                 type="password"
                 name='password'
             />
@@ -48,15 +52,20 @@ export const LoginFrom = () => {
             <button
                 disabled={isPending}
                 
-                className={clsx({
-                    'btn-primary': !isPending,
-                    'btn-disabled ': isPending,
-                })}>
-                <Link
-                href="/"
+                className={clsx(
+                    
+                    {
+                        'btn-primary': !isPending,
+                        'btn-disabled': isPending,                    
+                    },
+                    'w-80 !rounded-l-full !rounded-r-none ml-auto' // Sobrescribe rounded-full con !important
+                )}
                 >
-                Ingresar
-            </Link>
+                <Link
+                    href="/"
+                    >
+                    Sign in
+                </Link>
             </button>
             
 
@@ -68,7 +77,7 @@ export const LoginFrom = () => {
 
 
             {/* divisor line */}
-            <div className="flex items-center my-5">
+            <div className="flex items-center my-5 px-10">
                 <div className="flex-1 border-t border-gray-500"></div>
                 <div className="px-2 text-gray-800">O</div>
                 <div className="flex-1 border-t border-gray-500"></div>
@@ -76,7 +85,7 @@ export const LoginFrom = () => {
 
             <Link
                 href="/auth/new-account"
-                className="btn-secondary text-center">
+                className="btn-secondary text-center mx-10">
                 Crear una nueva cuenta
             </Link>
 

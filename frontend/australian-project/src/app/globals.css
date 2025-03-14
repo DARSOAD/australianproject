@@ -66,13 +66,25 @@ body {
 }
 
 .btn-primary {
-  @apply bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded-full transition-all;
+  @apply bg-[#1E90FF] hover:bg-green-800 text-white py-2 px-4 rounded-full transition-all;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all md:py-5;
 }
 
 .btn-disabled {
   @apply bg-gray-600 text-white py-2 px-4 rounded transition-all;
+}
+
+.input-primary {
+  @apply text-xs w-80 bg-gray-50 rounded-l-full px-8 py-3 focus:outline-none focus:border-blue-500 shadow-lg ml-auto;
+}
+
+.input-primary-icon{
+  @apply absolute top-1/2 right-10 transform -translate-y-1/2 text-gray-400;
+}
+
+.input-primary-label{
+  @apply text-gray-300 text-xs scale-50 pl-20 inline-block;
 }

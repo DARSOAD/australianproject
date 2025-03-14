@@ -1,17 +1,19 @@
 import { Sidebar, TopMenu } from "@/components";
+import { Footer } from "@/components/ui/footer/Footer";
 
 export default function shopLayout({
- children
+  children
 }: {
- children: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <main className="min-h-screen">
       <TopMenu/>
       <Sidebar />
-      <div className='px-0 sm:px-10'>
+      <div className='px-0'>
         {children}
       </div>
+      <Footer/>
     </main>
   );
 }

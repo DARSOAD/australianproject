@@ -15,7 +15,7 @@ interface Props {
 export const ProductGridItem = ({ product }: Props) => {
     const [displayImage, setDisplayImage] = useState(product.images[0])
     return (
-        <div className='rounded-3xl overflow-hidden fade-in shadow-2xl'>
+        <div className='rounded-3xl overflow-hidden fade-in shadow-lg'>
             <Link href={`/product/${product.slug}`}>
                 <Image
                     src={`/products/${displayImage}`}
@@ -27,8 +27,8 @@ export const ProductGridItem = ({ product }: Props) => {
                     onMouseLeave={() => setDisplayImage(product.images[0])}
                 />
             </Link>
-            <div className='p-4 flex flex-col'>
-                <Link className={`${secondaryFont.className} text-[#131313] hover:text-blue-600`} href={`/product/${product.slug}`}>
+            <div className='p-4 flex flex-col text-xs'>
+                <Link className={`${secondaryFont.className} text-gray-600 hover:text-blue-600`} href={`/product/${product.slug}`}>
                     {product.title}
                 </Link>
                 <span className='text-blue-600'>${product.price}</span>
@@ -38,7 +38,7 @@ export const ProductGridItem = ({ product }: Props) => {
                         {/* Clase responsiva para "PRICE MEMBERSHIP" */}
                         <span className={`${secondaryFont.className} text-[50%] sm:text-[60%] lg:text-[80%]`}>PRICE MEMBERSHIP</span>
                     </div>
-                    <IoCartOutline className="w-5 h-5 text-gray-700 ml-auto" /> {/* Icono de carrito */}
+                    <IoCartOutline className="w-5 h-5 text-gray-400 ml-auto" /> {/* Icono de carrito */}
                 </div>
             </div>
 

@@ -1,6 +1,8 @@
 import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
+import { Searchbar } from "@/components/ui/searchInput/Searchbar";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed/seed";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -20,7 +22,23 @@ export default async function productPage({params}: Props) {
   }
 
   return (
-    <div className='mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3'>
+    <>
+    <div className="w-full flex">
+      <div className="w-1/2 pr-20 py-8"> 
+        <button className='btn-primary w-full !rounded-r-full !rounded-l-none ml-auto'>
+            <Link
+                href="/"
+                >
+                  Best deals with membership
+            </Link>
+        </button>
+      </div>
+      <div className="w-1/2 pl-20">
+        <Searchbar/>
+      </div>
+    </div>
+    
+    <div className='mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3'>      
       {/* slideshow */}
       <div className='col-span-1 md:col-span-2'>
         {/* Mobile slideshow */}
@@ -50,5 +68,7 @@ export default async function productPage({params}: Props) {
         </p>
       </div>
     </div>
+    </>
+    
   );
 }

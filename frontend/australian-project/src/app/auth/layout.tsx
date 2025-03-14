@@ -1,5 +1,6 @@
 import { auth } from "@/auth.config";
 import { redirect } from "next/navigation";
+import { Sidebar, TopMenu } from "@/components";
 
 export default async function shopLayout({
  children
@@ -13,10 +14,11 @@ export default async function shopLayout({
   }
   
   return (
-    <main className="flex justify-center">
-      <div className='w-full sm:w-[350px] px-10'>
+    <main className="min-h-screen">
+      <TopMenu/>
+      <Sidebar />
+      <div className='w-full sm:w-[350px]'>
         {children}
-
       </div>
     </main>
   );

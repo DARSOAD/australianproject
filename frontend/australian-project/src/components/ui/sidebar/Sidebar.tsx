@@ -1,4 +1,5 @@
 'use client'
+import { Searchbar } from "@/components/ui/searchInput/Searchbar";
 import { logout } from '@/actions'
 import { useUiStore } from '@/store'
 import clsx from 'clsx'
@@ -46,15 +47,11 @@ export const Sidebar = () => {
                     onClick={() => closeMenu()}
                 />
 
-                {/* input */}
-                <div className='relative mt-14'>
-                    <IoSearchOutline size={20} className='absolute top-2 left-2' />
-                    <input
-                        type="text"
-                        placeholder='Buscar'
-                        className='w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-500'
-                    />
+                {/* Searchbar */}
+                <div className="my-6">
+                    <Searchbar/>
                 </div>
+                
                 {/* Menu Opcion */}
                 <Link
                     href='/profile'
