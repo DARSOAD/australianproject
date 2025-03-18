@@ -1,7 +1,13 @@
+"use client"
+
+import { useState } from "react";
 import { ProductGrid, Title } from "@/components";
 import { Category } from "@/interfaces";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
+import FilterBar from "@/app/(shop)/category/filter"; 
+import Breadcrumb from "@/components/ui/Breadcrumb/breadcrumb";
+import Dropdown from "@/components/ui/dropdown/dropdown";
 
 const seedProducts = initialData.products;
 
@@ -11,23 +17,33 @@ interface Props {
   };
 }
 
-export default async function categoryPage({ params }: Props) {
-  const { id } = await params; // Usa `await` aquí para evitar el error
-  const products = seedProducts.filter(product => product.gender === id)
-  const labels: Record<Category, string> = {
-    'men': 'para hombres',
-    'women': 'para mujeres',
-    'kid': 'para niños',
-    'unisex': 'para todos'
-  } 
+export default function CategoryPage({ params }: Props) {
+  const { id } = params; 
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  
+        const labels: Record<Category, string> = {
+          men: "para hombres",
+          women: "para mujeres",
+          kid: "para niños",
+          unisex: "para todos",
+          };
 
-  // if (id === 'kid'){
-  //   notFound();
-  // }
-  return (
-    <>
-      <Title title={`Articulos de ${labels[id]}`} subtitle={"Todos los productos"} className={"mb-2"} />
-      <ProductGrid products={products} />
+            // Filtramos los productos según la categoría seleccionada
+            const filteredProducts = seedProducts.filter((product) => {
+              return product.gender === id && (selectedFilter === "all" || product.category === selectedFilter);
+            });
+
+      return (
+      <>
+      {/* Miga de pan*/} 
+      <Breadcrumb categories={["Shop", labels[id]]} />
+      {/* Barra de Filtros */}
+      <div className="ml-4">  {/* Agrega un margen izquierdo */}
+        <FilterBar selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter} />
+      </div>
+
+      {/* Grid de Productos */}
+      <ProductGrid products={filteredProducts} />
     </>
   );
 }
