@@ -57,7 +57,7 @@ export const CartMemberShip = ({texts,imageSrc}:Props) => {
                     </div>
                 </div>
             </div>
-            <div className='btn-primary w-[95%] h-[60px] flex  justify-center items-center'>
+            <div className='w-[95%] h-[60px] bg-green-500 hover:bg-green-600 text-white text-lg font-semibold rounded-full flex justify-center items-center transition'>
                 <h1>Check out</h1>
             </div>
         </div>

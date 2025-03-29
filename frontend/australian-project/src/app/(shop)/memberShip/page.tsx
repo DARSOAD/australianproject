@@ -30,36 +30,32 @@ export default function MemberShip() {
                     priceOption1: '$12.5/pw',
                     priceOption2: '$161.5/py'
                 }} imageSrc={img2} />
-            <div className="fixed bottom-0 left-0 w-full flex gap-4 p-4">
-                {/* Usamos gap-4 para agregar espacio entre los elementos */}
-                <div className="relative flex items-center justify-center">
-                    <div className="w-auto h-[50px] bg-white rounded-full pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none placeholder-gray-400">
-                        <IoCartOutline size={40} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
-                    </div>
+
+
+                <div className="fixed bottom-0 left-0 w-full flex gap-4 p-4 bg-white z-50">
+                {/* Botón: carrito blanco */}
+                <div className="flex items-center justify-center w-[50px] h-[50px] bg-white rounded-full shadow-md">
+                    <IoCartOutline size={24} className="text-gray-400" />
                 </div>
 
-                <div className="relative flex items-center justify-center">
-                    <div className="w-auto h-[50px] bg-white rounded-full pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none placeholder-gray-400">
-                        <IoCallOutline size={40} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
-                    </div>
+                {/* Botón: llamada verde */}
+                <div className="flex items-center justify-center w-[50px] h-[50px] bg-green-500 rounded-full shadow-md">
+                    <IoCallOutline size={24} className="text-white" />
                 </div>
 
+                {/* Input de búsqueda */}
                 <div className="relative flex items-center justify-center flex-grow">
                     <input
                         type="text"
                         placeholder="Search...."
-                        className="w-full h-[50px] bg-white rounded-full pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none placeholder-gray-400"
+                        className="w-full h-[50px] bg-white rounded-full pl-4 pr-10 border text-sm text-gray-800 shadow-md focus:outline-none placeholder-gray-400"
                     />
                     <IoSearchOutline
                         size={20}
-                        className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400"
+                        className="absolute right-3 text-gray-400"
                     />
                 </div>
             </div>
-
-
-
         </div>
     );
 }
-
