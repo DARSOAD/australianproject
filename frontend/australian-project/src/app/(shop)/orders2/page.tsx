@@ -1,7 +1,7 @@
 // app/order/page.tsx
 'use client';
 
-import OrderForm from '@/components/ui/Order/order-form';
+import OrderForm from '@/app/(shop)/orders2/order-form';
 import { useCartStore } from '@/store/ui/cart-store';
 
 export default function OrderPage() {
