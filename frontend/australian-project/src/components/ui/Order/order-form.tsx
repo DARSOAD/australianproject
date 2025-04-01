@@ -2,8 +2,14 @@
 
 import { useCartStore } from '@/store/ui/cart-store';
 import { useState } from 'react';
-import { FaApplePay } from "react-icons/fa6";
-import { SiAfterpay } from "react-icons/si";
+import { SiApplepay } from "react-icons/si";//apple pay
+import { SiAfterpay } from "react-icons/si"; //after pay flechas 
+import { IoIosArrowDown } from "react-icons/io";//flecha
+import { TbPencilMinus } from "react-icons/tb";// lapiz
+import { FaCcMastercard } from "react-icons/fa";//master
+import { FaCcVisa } from "react-icons/fa6";//visa
+import { IoLogoPaypal } from "react-icons/io5";// paypal
+
 import InputField from '../inputfield/InputField';
 
 
@@ -29,33 +35,66 @@ export default function OrderForm() {
   };
 
   return (
+    <div className="w-full max-w-2xl mx-auto px-4">
     <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Dirección */}
-      <InputField
-            label="Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Enter your address"
-            icon={
-              <span className="material-symbols-outlined text-gray-400 text-md">
-                edit
+    {/* Dirección */}
+    {/* Dirección y búsqueda - responsive */}
+        <div className="w-full flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 px-4">
+          {/* Address Field */}
+          <div className="w-full lg:w-[45%]">
+            <div className="relative flex items-center h-10 bg-gray-50 rounded-full shadow-md px-4">
+              {/* Label flotante (opcional) */}
+              <span className="absolute left-4 top-[-10px] bg-white text-gray-500 text-xs px-1">
+                Address
               </span>
-            }
-            rightIcon={
+
+              {/* Icono izquierdo */}
+              <TbPencilMinus className="absolute left-3 text-gray-400 text-lg" />
+
+              {/* Input de dirección */}
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Your address"
+                className="w-full pl-10 pr-10 bg-transparent focus:outline-none text-sm text-gray-700"
+              />
+
+              {/* Icono derecho */}
+              <IoIosArrowDown className="absolute right-3 text-green-500 text-lg" />
+            </div>
+          </div>
+
+          {/* Search Field: solo visible en pantallas grandes */}
+          <div className="w-full lg:w-[45%] hidden lg:block">
+            <div className="relative flex items-center h-10 bg-gray-50 rounded-full shadow-md px-4">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full pl-4 pr-10 bg-transparent focus:outline-none text-sm text-gray-700"
+              />
+              {/* Icono lupa */}
               <svg
+                className="absolute right-3 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-green-500"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                width="18"
+                height="18"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
                 />
               </svg>
-            }
-          />  
+            </div>
+          </div>
+        </div>
+
+
 
       {/* Métodos de envío */}
       <div className="ml-10">
@@ -101,12 +140,16 @@ export default function OrderForm() {
               value="apple"
               checked={payment === 'apple'}
               onChange={() => setPayment('apple')}
+              className="mb-7"
             />
-            
-            <span>Apple Pay</span>
-            <FaApplePay />
+            <div className="flex flex-col">
+            <span text-base font-semibold>Apple Pay</span>
+            <SiApplepay className="mt-1 text-2xl" />
+            </div>
           </label>
 
+          
+          {/*=============================*/}
           {/* Tarjeta */}
           <label className="flex items-start space-x-3">
             <input
@@ -121,61 +164,102 @@ export default function OrderForm() {
               <p className="text-xs text-gray-500">Click one of your card</p>
               <div className="flex gap-4 mt-3">
                 <div className="w-56 h-32 rounded-xl p-3 bg-gradient-to-tr from-pink-400 to-orange-300 text-white shadow-md relative">
-                  <p className="text-xs">2333 3444 2676 2323</p>
+                  <p className="text-xs">2333 3444 2676 1203</p>
                   <p className="text-xs mt-1">
                     MONTH/YEAR
                     <br />
                     04/05
                   </p>
                   <p className="absolute bottom-3 right-3 font-bold">TONY NGUYEN</p>
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
-                    className="absolute bottom-2 left-3 h-5"
-                  />
+                  <FaCcVisa className='mt-8'/>
                 </div>
                 <div className="w-56 h-32 rounded-xl p-3 bg-gradient-to-tr from-purple-400 to-yellow-300 text-white shadow-md relative">
-                  <p className="text-xs">1562 3444 2676 8888</p>
+                  <p className="text-xs">1562 3444 2678 2525</p>
                   <p className="text-xs mt-1">
                     MONTH/YEAR
                     <br />
                     04/05
                   </p>
                   <p className="absolute bottom-3 right-3 font-bold">T. NGUYEN</p>
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png"
-                    className="absolute bottom-2 left-3 h-5"
-                  />
+                  <FaCcMastercard className='mt-8'/>
                 </div>
               </div>
             </div>
           </label>
 
           {/* Paypal */}
-          <label className="flex items-center space-x-3">
-            <input
-              type="radio"
-              value="paypal"
-              checked={payment === 'paypal'}
-              onChange={() => setPayment('paypal')}
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-              className="h-5"
-            />
-            <span>cuonght@gmail.com</span>
-          </label>
+          <label className="flex items-start space-x-3 w-full">
+              {/* Radio button */}
+              <input
+                type="radio"
+                value="paypal"
+                checked={payment === 'paypal'}
+                onChange={() => setPayment('paypal')}
+                className="mt-1"
+              />
+
+              {/* Contenido a la derecha del radio */}
+              <div className="w-full ">
+                <p className="text-base font-semibold">Paypal</p>
+
+                {/* Input con ícono adentro */}
+                <div className="relative flex items-center w-full h-10 bg-gray-50 rounded-full  mt-1 ">
+                  
+                  {/* Icono de PayPal dentro del input */}
+                  <IoLogoPaypal className="absolute left-3 text-xl text-blue-600" />
+
+                  {/* Campo de correo */}
+                  <input
+                    type="text"
+                    value={"cuonght@gmail.com"}
+                    onChange={(e) => setAddress(e.target.value)}
+                    placeholder="cuonght@gmail.com"
+                    className="w-full pl-10 pr-10 bg-transparent focus:outline-none text-sm text-gray-500"
+                  />
+
+                  {/* Icono de lápiz al lado derecho */}
+                  <TbPencilMinus className="absolute right-3 text-gray-400 text-lg" />
+                </div>
+              </div>
+            </label>
+
 
           {/* Afterpay */}
-          <label className="flex items-center space-x-3">
-            <input
-              type="radio"
-              value="afterpay"
-              checked={payment === 'afterpay'}
-              onChange={() => setPayment('afterpay')}
-            />
-           <SiAfterpay />
-            <span>4 interest-free payment with Afterpay</span>
-          </label>
+          
+          <label className="flex items-start space-x-3 w-full">
+              {/* Radio button */}
+              <input
+                type="radio"
+                value="paypal"
+                checked={payment === 'paypal'}
+                onChange={() => setPayment('paypal')}
+                className="mt-1"
+              />
+
+              {/* Contenido a la derecha del radio */}
+              <div className="w-full ">
+                <p className="text-base font-semibold">4 interest-free payment with Afterpay</p>
+
+                {/* Input con ícono adentro */}
+                <div className="relative flex items-center w-full h-10 bg-gray-50 rounded-full  mt-1 ">
+                  
+                  {/* Icono de Afterpay dentro del input */}
+                  <SiAfterpay className="absolute left-3 text-xl text-black" />
+
+                  {/* Campo de correo */}
+                  <input
+                    type="text"
+                    value={""}
+                    onChange={(e) => setAddress(e.target.value)}
+                    placeholder=""
+                    className="w-full pl-10 pr-10 bg-transparent focus:outline-none text-sm text-gray-500"
+                  />
+
+                  {/* Icono de lápiz al lado derecho */}
+                  <TbPencilMinus className="absolute right-3 text-gray-400 text-lg" />
+                </div>
+              </div>
+            </label>
         </div>
       </div>
 
@@ -192,5 +276,6 @@ export default function OrderForm() {
         <p className="text-green-600 text-center mt-4">{confirmation}</p>
       )}
     </form>
+    </div>
   );
 }
