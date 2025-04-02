@@ -37,10 +37,10 @@ export const OrderItem = ({ title, quantity, price, imageUrl, onRemove }: OrderI
       </div>
 
       {/* Precio y botón eliminar */}
-      <div className="flex items-center space-x-2">
-        <p className="text-blue-600 font-semibold text-sm">${price.toFixed(2)}</p>
+      <div className="flex items-center space-x-2 lg:mr-36">
+        <p className="text-blue-600 font-semibold text-sm mt-8">${price.toFixed(2)}</p>
         {onRemove && (
-          <button onClick={onRemove} className="text-gray-400 hover:text-red-500 transition">
+          <button onClick={onRemove} className="text-gray-400 hover:text-red-500 transition mb-7">
             <IoCloseOutline size={24} />
           </button>
         )}

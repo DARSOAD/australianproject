@@ -27,7 +27,7 @@ export const PriceOptions = () => {
   const [selected, setSelected] = useState('retail');
 
   return (
-    <div className="space-y-3 mt-6 ml-8">
+    <div className="space-y-3 mt-6 ml-8 lg:mr-48">
       {options.map((option) => (
         <label
           key={option.id}
