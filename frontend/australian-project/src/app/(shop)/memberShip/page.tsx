@@ -39,7 +39,7 @@ export default function MemberShip() {
                 </div>
 
                 {/* Botón: llamada verde */}
-                <div className="flex items-center justify-center w-[50px] h-[50px] bg-green-500 rounded-full shadow-md">
+                <div className="flex items-center justify-center w-[50px] h-[50px] bg-blue-500 rounded-full shadow-md">
                     <IoCallOutline size={24} className="text-white" />
                 </div>
 

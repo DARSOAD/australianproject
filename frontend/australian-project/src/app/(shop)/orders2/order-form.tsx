@@ -39,7 +39,8 @@ export default function OrderForm() {
           <AddressField address={address} setAddress={setAddress} />
           <SearchField />
         </div>
-  
+      
+    
         {/* Métodos de envío */}
         <ShippingMethod shipping={shipping} setShipping={setShipping} />
   
@@ -66,7 +67,7 @@ export default function OrderForm() {
       </form>
     </div>
   );
-  
+} 
 
 // //
 //          order-form.tsx           ⬅ Componente principal del formulario
@@ -74,5 +75,5 @@ export default function OrderForm() {
 //      ├── ShippingMethod.tsx       ⬅ Radios de envío: Express / Standard
 //      ├── PaymentMethod.tsx        ⬅ Apple Pay, Tarjeta, PayPal, Afterpay
 //           ├─ CardSelector.tsx     ⬅ (Opcional) tarjetas visuales separadas
-//      └── AddressField.tsx         ⬅ Campo de dirección
-//
+//      └── AddressField.tsx         ⬅ Campo de dirección. 
+
