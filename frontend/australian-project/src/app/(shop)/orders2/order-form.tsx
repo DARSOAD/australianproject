@@ -4,10 +4,13 @@ import { useCartStore } from '@/store/ui/cart-store';
 import { useState } from 'react';
 
 import AddressField from '../../../components/ui/Order/AddressField';
-import SearchField from '../../../components/ui/Order/SearchField';
+import { Searchbar } from "@/components/ui/searchInput/Searchbar";
 import ShippingMethod from '../../../components/ui/Order/ShippingMethod';
 import PaymentMethod from '../../../components/ui/Order/PaymentMethod';
 import CardSelector from '../../../components/ui/Order/CardSelector';
+import { SlArrowLeft } from "react-icons/sl";
+
+
 
 
 
@@ -31,31 +34,50 @@ export default function OrderForm() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
+    <div className="w-full">
       <form onSubmit={handleSubmit} className="space-y-8">
   
         {/* Dirección y búsqueda - responsive */}
         <div className="w-full flex flex-col lg:flex-row gap-4">
-          <AddressField address={address} setAddress={setAddress} />
-          <SearchField />
+          
+          <div className="lg:w-2/5 lg:mt-7">
+            <AddressField address={address} setAddress={setAddress} />
+          </div>
+          
+          <div className="lg:w-1/5"></div>
+          
+          <div className="lg:w-2/5 hidden lg:block h-1/2 justify-center items-center">
+            <Searchbar />
+          </div>
         </div>
-      
-    
+        
+     <div className='w-4/5 mx-auto lg:mt-0'>
+
+        <div className="  hidden lg:block ">
+          <SlArrowLeft className="text-gray-500" />{/*Flecha */}
+        </div>
+
         {/* Métodos de envío */}
+        <div className='lg:mt-8'>
         <ShippingMethod shipping={shipping} setShipping={setShipping} />
-  
+        </div>
+
+
         {/* Métodos de pago */}
+        <div className='mt-10'>
         <PaymentMethod
           payment={payment}
           setPayment={setPayment}
           address={address}
           setAddress={setAddress}
         />
-  
-        {/* Botón de pago */}
+       </div>
+
+
+         {/* Botón de pago */}
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition"
+          className="w-full mt-4 bg-green-500 text-white py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition"
         >
           Pay
         </button>
@@ -64,16 +86,8 @@ export default function OrderForm() {
         {confirmation && (
           <p className="text-green-600 text-center mt-4">{confirmation}</p>
         )}
+        </div>
       </form>
     </div>
   );
 } 
-
-// //
-//          order-form.tsx           ⬅ Componente principal del formulario
-//      ├── SearchField.tsx          ⬅ Campo de búsqueda (solo en pantallas grandes)
-//      ├── ShippingMethod.tsx       ⬅ Radios de envío: Express / Standard
-//      ├── PaymentMethod.tsx        ⬅ Apple Pay, Tarjeta, PayPal, Afterpay
-//           ├─ CardSelector.tsx     ⬅ (Opcional) tarjetas visuales separadas
-//      └── AddressField.tsx         ⬅ Campo de dirección. 
-

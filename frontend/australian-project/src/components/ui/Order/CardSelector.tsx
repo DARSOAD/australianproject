@@ -5,7 +5,7 @@ import { FaCcMastercard } from 'react-icons/fa';
 
 export default function CardSelector() {
   return (
-    <div className="flex gap-4 mt-3">
+    <div className="flex gap-4 ">
       {/* Tarjeta VISA */}
       <div className="w-56 h-32 rounded-xl p-3 bg-gradient-to-tr from-pink-400 to-orange-300 text-white shadow-md relative">
         <p className="text-xs">2333 3444 2676 1203</p>

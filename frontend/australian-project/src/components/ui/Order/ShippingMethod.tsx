@@ -7,7 +7,7 @@ interface Props {
 
 export default function ShippingMethod({ shipping, setShipping }: Props) {
   return (
-    <div className="ml-10">
+    <div className="ml-5">
       <h3 className="text-md font-normal text-gray-700">Shipping Method</h3>
       <div className="space-y-3 mt-2">
         <label className="flex items-start space-x-3">

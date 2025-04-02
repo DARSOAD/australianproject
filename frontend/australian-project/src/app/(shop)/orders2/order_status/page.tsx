@@ -7,7 +7,7 @@ import { OrderItem } from '@/components/ui/Order/Order-Status/OrderItem';
 import { SuggestedProducts } from '@/components/ui/Order/Order-Status/SuggestedProducts';
 import { PriceOptions } from '@/components/ui/Order/Order-Status/PriceOptions';
 import AddressField from '../../../../components/ui/Order/AddressField';
-import SearchField from '../../../../components/ui/Order/SearchField';
+import { Searchbar } from "@/components/ui/searchInput/Searchbar";
 import { CartMemberShip } from "@/components";
 import OrderSummary from '@/components/ui/Order/Order-Status/OrderSummary';
 
@@ -21,16 +21,24 @@ export default function OrderStatusPage() {
     <div className="flex flex-col justify-end pr-0">
       
      {/* Encabezado para pantalla grande */}
-     <div className='hidden lg:flex justify-end'>
-      <div className="hidden lg:flex w-full flex-row gap-4">
-        <div className="w-1/2">
-          <AddressField address={address} setAddress={setAddress} />
+        <div className='hidden lg:flex justify-between w-full'>
+          <div className="flex w-full gap-4">
+            {/* AddressField ocupa el 40% */}
+            <div className="w-2/5">
+              <AddressField address={address} setAddress={setAddress} />
+            </div>
+
+            {/* Searchbar ocupa el 40% */}
+            <div className="w-2/5">
+              <Searchbar />
+            </div>
+
+            {/* El 20% restante se puede dejar vacío o se puede usar para otro contenido */}
+            <div className="w-1/5"></div>
+          </div>
         </div>
-        <div className="w-1/2">
-          <SearchField />
-        </div>
-      </div>
-      </div>
+
+
 
 
         {/* PRODUCTOS*/}
