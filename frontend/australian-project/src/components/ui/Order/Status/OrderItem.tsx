@@ -31,13 +31,13 @@ export const OrderItem = ({ title, quantity, price, imageUrl, onRemove }: OrderI
         </div>
 
         <div>
-          <p className="font-medium text-sm">{title}</p>
+          <p className="font-medium text-xs">{title}</p>
           <QuantitySelector quantity={quantity} />
         </div>
       </div>
 
       {/* Precio y botón eliminar */}
-      <div className="flex items-center space-x-2 lg:mr-36">
+      <div className="flex items-center space-x-2 lg:mr-24">
         <p className="text-blue-600 font-semibold text-sm mt-8">${price.toFixed(2)}</p>
         {onRemove && (
           <button onClick={onRemove} className="text-gray-400 hover:text-red-500 transition mb-7">

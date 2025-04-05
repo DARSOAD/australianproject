@@ -5,7 +5,7 @@ import { IoLogoPaypal } from 'react-icons/io5';
 import { TbPencilMinus } from 'react-icons/tb';
 import { FaCcVisa } from 'react-icons/fa6';
 import { FaCcMastercard } from 'react-icons/fa';
-import CardSelector from '../Order/CardSelector';
+import CardSelector from '../Payment/CardSelector';
 import { IoAddOutline } from "react-icons/io5";
 
 interface Props {

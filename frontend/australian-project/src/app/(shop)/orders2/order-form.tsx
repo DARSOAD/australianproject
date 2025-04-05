@@ -3,11 +3,11 @@
 import { useCartStore } from '@/store/ui/cart-store';
 import { useState } from 'react';
 
-import AddressField from '../../../components/ui/Order/AddressField';
+import AddressField from '../../../components/ui/Order/Address/AddressField';
 import { Searchbar } from "@/components/ui/searchInput/Searchbar";
-import ShippingMethod from '../../../components/ui/Order/ShippingMethod';
-import PaymentMethod from '../../../components/ui/Order/PaymentMethod';
-import CardSelector from '../../../components/ui/Order/CardSelector';
+import ShippingMethod from '../../../components/ui/Order/Shipping/ShippingMethod';
+import PaymentMethod from '../../../components/ui/Order/Payment/PaymentMethod';
+import CardSelector from '../../../components/ui/Order/Payment/CardSelector';
 import { SlArrowLeft } from "react-icons/sl";
 
 

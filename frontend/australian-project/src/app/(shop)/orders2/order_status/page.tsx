@@ -3,13 +3,14 @@
 
 import { useState } from 'react';
 
-import { OrderItem } from '@/components/ui/Order/Order-Status/OrderItem';
-import { SuggestedProducts } from '@/components/ui/Order/Order-Status/SuggestedProducts';
-import { PriceOptions } from '@/components/ui/Order/Order-Status/PriceOptions';
-import AddressField from '../../../../components/ui/Order/AddressField';
+import { OrderItem } from '@/components/ui/Order/Status/OrderItem';
+import { SuggestedProducts } from '@/components/ui/Order/Suggested-products/SuggestedProducts';
+import { PriceOptions } from '@/components/ui/Order/Princing/PriceOptions';
+import AddressField from '../../../../components/ui/Order/Address/AddressField';
 import { Searchbar } from "@/components/ui/searchInput/Searchbar";
 import { CartMemberShip } from "@/components";
-import OrderSummary from '@/components/ui/Order/Order-Status/OrderSummary';
+import OrderSummary from '@/components/ui/Order/Summary/OrderSummary';
+import { SlArrowLeft } from "react-icons/sl";
 
 
 
@@ -18,28 +19,32 @@ export default function OrderStatusPage() {
 
 
   return (
-    <div className="flex flex-col justify-end pr-0">
+    <div className="flex flex-col justify-end pr-0 px-9">
       
      {/* Encabezado para pantalla grande */}
         <div className='hidden lg:flex justify-between w-full'>
           <div className="flex w-full gap-4">
             {/* AddressField ocupa el 40% */}
-            <div className="w-2/5">
-              <AddressField address={address} setAddress={setAddress} />
+            <div className="lg:w-2/5 lg:mt-7 ">
+            <AddressField address={address} setAddress={setAddress} />
             </div>
-
-            {/* Searchbar ocupa el 40% */}
-            <div className="w-2/5">
+            
+            <div className="lg:w-1/5"></div>
+            
+            <div className="lg:w-2/5 hidden lg:block h-1/2 justify-center items-center">
               <Searchbar />
             </div>
-
-            {/* El 20% restante se puede dejar vacío o se puede usar para otro contenido */}
-            <div className="w-1/5"></div>
           </div>
         </div>
 
+        <div className="  hidden lg:block lg:ml-28 lg:mb-16">
+          <SlArrowLeft className="text-gray-500" />{/*Flecha */}
+        </div>
 
 
+          <div className="hidden lg:block text-gray-400 lg:ml-48 text-xs ">
+            <p>Your name</p>
+          </div>
 
         {/* PRODUCTOS*/}
         <div className="w-full flex flex-col lg:flex-row lg:items-start gap-4">
@@ -73,7 +78,7 @@ export default function OrderStatusPage() {
          </div>
 
     {/*Anuncio */}
-    <div className='lg:ml-44' >
+    <div className='lg:ml-36 ml-5' >
            <h1 className=" text-sm text-gray-400 mt-8 ">
                Best deals with membership
             </h1>
@@ -88,7 +93,7 @@ export default function OrderStatusPage() {
 
 
           {/* Descuento por membresia  */}
-          <div className='lg:ml-48 '>
+          <div className='lg:ml-32 '>
          <PriceOptions />      
           <div/>
       
@@ -96,15 +101,15 @@ export default function OrderStatusPage() {
           {/* Cupon de descuentos */}
           <div className="w-full lg:flex lg:justify-end">
             <div className="w-full bg-gray-50 shadow-md px-4 py-2 text-xs text-gray-700 mb-5 mt-4
-              flex flex-col lg:flex-row lg:items-center lg:justify-between lg:w-[50%] rounded-l-full">
+              flex flex-row lg:flex-row lg:items-center lg:justify-between lg:w-[50%] rounded-l-full">
 
-              <span className="text-gray-500 mb-2 lg:mb-0">Offers</span>
+              <span className="text-gray-500 ml-7 ">Offers</span>
 
               <input
                 type="text"
                 placeholder="Add a promo code"
-                className="bg-transparent outline-none text-gray-700 text-sm placeholder:text-gray-400 
-                w-full lg:w-auto lg:min-w-[200px] text-right"
+                className="bg-transparent outline-none text-gray-700 text-sx placeholder:text-gray-400 
+                w-full lg:w-auto lg:min-w-[200px] text-right mr-5 lg:mr-24"
               />
             </div>
           </div>
@@ -115,9 +120,10 @@ export default function OrderStatusPage() {
                   <div className="w-full flex flex-col lg:flex-row gap-4 lg:hidden  rounded-l-full">
                     <AddressField address={address} setAddress={setAddress} />
                   </div>
+                  
         {/*SUBTOTAL /TOAL */}
-          <div className="w-full lg:flex lg:justify-end ">
-            <div className="w-full lg:w-fulls lg:mr-52">
+          <div className="w-[90%] lg:flex lg:justify-end ">
+            <div className="w-full lg:w-fulls lg:mr-20 ">
               <OrderSummary />
             </div>
           </div>

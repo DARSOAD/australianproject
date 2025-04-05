@@ -1,9 +1,9 @@
 // src/app/orders2/order_status/layout.tsx
 export default function OrderStatusLayout({ children }: { children: React.ReactNode }) {
     return (
-      <div className=" bg-gray-50 min-h-screen pl-10">
-        <h1 className="text-sm text-neutral-500 font-bold lg:hidden">Hi!</h1>
-        <h2 className="text-xs  text-neutral-600 lg:hidden" >Tonni</h2>
+      <div className=" bg-gray-50 min-h-screen ">
+        <h1 className="text-xs text-neutral-400 font-bold lg:hidden px-10">Hi!</h1>
+        <h2 className="text-xs  text-neutral-600 lg:hidden px-10" >Tonni !</h2>
         
         {children} {/* Aquí se renderiza page.tsx */}
 

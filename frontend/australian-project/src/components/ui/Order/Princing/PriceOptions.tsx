@@ -27,7 +27,7 @@ export const PriceOptions = () => {
   const [selected, setSelected] = useState('retail');
 
   return (
-    <div className="space-y-3 mt-6 ml-8 lg:mr-48">
+    <div className="space-y-3 mt-6 ml-8 lg:mr-44">
       {options.map((option) => (
         <label
           key={option.id}
@@ -41,24 +41,24 @@ export const PriceOptions = () => {
               checked={selected === option.id}
               onChange={() => setSelected(option.id)}
               className="w-4 h-4 accent-green-600"
-
             />
             <div className="text-xs leading-5">
-              {option.label.map((line, i) => (
-                <p
-                  key={i}
-                  className={`${selected !== option.id ? 'text-gray-400' : 'text-gray-800'} ${
-                    i > 0 ? 'text-xs text-gray-400' : ''
-                  }`}
-                >
-                  {line}
-                </p>
-              ))}
+              {/* ✅ Esto cambia la forma de mostrar los labels */}
+              <div className={`${selected !== option.id ? 'text-gray-400' : 'text-gray-800'}`}>
+                {option.label.map((line, i) => (
+                  <span
+                    key={i}
+                    className="block lg:inline"
+                  >
+                    {line}{' '}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Derecha: precios con grid alineado y margen derecho */}
-          <div className="grid grid-cols-3 gap-x-4 w-3/5 text-right pr-4">
+          <div className="grid grid-cols-3 gap-x-4 w-3/5 text-right pr-4 lg:pr-0">
             {option.prices.map((price, i) => (
               <span
                 key={i}

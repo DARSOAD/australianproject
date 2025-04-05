@@ -23,9 +23,9 @@ const suggestedProducts = [
 
 export const SuggestedProducts = () => {
   return (
-    <div className="flex items-center space-x-2 lg:space-x-12  ">
+    <div className="flex items-center space-x-2 lg:space-x-8  ">
       {suggestedProducts.map((item, index) => (
-        <div key={item.id} className="flex items-center space-x-1 lg:space-x-12">
+        <div key={item.id} className="flex items-center space-x-1 lg:space-x-8">
           {/* Producto */}
           <div className="relative flex flex-col items-center">
             {item.label && (
