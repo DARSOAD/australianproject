@@ -19,7 +19,7 @@ export default function OrderStatusPage() {
 
 
   return (
-    <div className="flex flex-col justify-end pr-0 px-9">
+    <div className="flex flex-col justify-end pr-0 px-7">
       
      {/* Encabezado para pantalla grande */}
         <div className='hidden lg:flex justify-between w-full'>

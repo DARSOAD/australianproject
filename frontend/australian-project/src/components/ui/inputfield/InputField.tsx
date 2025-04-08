@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { TbPencilMinus } from "react-icons/tb";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 
 
@@ -21,7 +22,7 @@ interface InputFieldProps {
 
 export default function InputField({
   label,
-  type,
+  type ='text',
   value,
   name,
   icon,
@@ -38,7 +39,7 @@ export default function InputField({
   return (
     <div className={containerClassName}>
       {/* Label opcional */}
-      {label && <label className="text-gray-500 text-sm">{label}</label>}
+      {label && <label className="text-gray-500 text-xs">{label}</label>}
 
       {/* Contenedor interno (flex para iconos, input, etc.) */}
       <div className="relative flex items-center">
@@ -54,7 +55,7 @@ export default function InputField({
           name={name}
           value={value}
           onChange={onChange}
-          readOnly={!isEditing}
+          readOnly={isEditing} /// En false porque nnunca la cambias
           pattern={pattern}
           required={required}
           placeholder={placeholder}
@@ -63,10 +64,10 @@ export default function InputField({
             ${inputClassName ?? ""}`}
         />
 
-        {/* Ícono derecho (opcional) */}
-        {rightIcon && (
-          <span className="ml-2 flex items-center">{rightIcon}</span>
-        )}
+        {/* Ícono de lupa a la derecha dentro del input */}
+        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <HiMagnifyingGlass  size={18} />
+        </span>
       </div>
     </div>
   );

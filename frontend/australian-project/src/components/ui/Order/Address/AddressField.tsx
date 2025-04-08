@@ -23,7 +23,7 @@ export default function AddressField({ address, setAddress }: Props) {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           placeholder="Your address"
-          className="w-full pl-10 pr-10 bg-transparent focus:outline-none text-sm text-gray-700"
+          className="w-full pl-10 pr-10 bg-transparent focus:outline-none text-xs text-gray-700"
         />
         <IoIosArrowDown className="absolute right-5 text-green-500 text-lg " />
       </div>
