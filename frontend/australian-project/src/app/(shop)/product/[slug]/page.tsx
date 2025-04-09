@@ -12,63 +12,84 @@ interface Props {
 }
 
 
-export default async function productPage({params}: Props) {
 
-  const {slug} = await params
-  const product = initialData.products.find(product => product.slug === slug)
+async function getProduct(slug: string) {
+  try {
+    const res = await fetch(`http://localhost:3000/api/catalog/${slug}`, {
+      cache: 'no-store',
+    });
+
+
+    if (!res.ok) return undefined;
+
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error al obtener el producto:", error);
+    return undefined;
+  }
+}
+
+
+export default async function productPage(props: Props) {
+
+  const { slug } = await props.params;
+  const product = await getProduct(slug);
 
   if (!product){
     notFound();
   }
 
+
   return (
     <>
-    <div className="w-full flex">
-      <div className="w-1/2 pr-20 py-8"> 
-        <button className='btn-primary w-full !rounded-r-full !rounded-l-none ml-auto'>
-            <Link
-                href="/"
-                >
-                  Best deals with membership
-            </Link>
-        </button>
-      </div>
-      <div className="w-1/2 pl-20">
-        <Searchbar/>
-      </div>
-    </div>
-    
-    <div className='mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3'>      
-      {/* slideshow */}
-      <div className='col-span-1 md:col-span-2'>
-        {/* Mobile slideshow */}
-        <ProductMobileSlideshow  images={product.images} title={product.title} className='block md:hidden'/>
+    {/* ENCABEZADO */}
+    <div className="hidden lg:block">
+      <div className="flex w-full py-8 items-center justify-between">
+        {/* Botón */}
+        <div className="flex-1 pr-4">
+          <button className="btn-primary w-full !rounded-r-full !rounded-l-none ml-auto">
+            <Link href="/">Best deals with membership</Link>
+          </button>
+        </div>
 
-        {/* Desktop slideshow  */}
-        <ProductSlideshow images={product.images} title={product.title}  className='hidden md:block' />
-      </div>
-      {/* Details */}
-      <div className='col-span-1 px-5'>
-        <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
-          {product.title}
-        </h1>
-        <p className='text-lg mb-5'>{product.price}</p>
-        {/* selector de tallas */}
-        <SizeSelector selectedSize={product.sizes[0]} availableSizes={product.sizes}  />
-        {/* selector de cantidad */}
-        <QuantitySelector quantity={2} />
-        {/* Button */}
-        <button className='btn-primary my-5'>
-          Agregar al carrito
-        </button>
-        {/* descripcion */}
-        <h3 className='font-bold text-sm'>Descripcion</h3>
-        <p className='font-light'>
-          {product.description}
-        </p>
+        {/* Searchbar */}
+        <div className="flex-1 pl-4">
+          <Searchbar />
+        </div>
       </div>
     </div>
-    </>
+
     
+ 
+  {/* Imagen principal */}
+  <div className=" max-w-[500px] mx-[10%] justify-center bg-white">
+    <img
+      src={product.images?.[0] || "/images/default.png"}
+      alt={product.name}
+      className="w-full max-w-[500px] h-[300px] object-contain rounded-xl shadow-md mb-6 "
+    />
+  </div>
+
+  {/* Contenido (título y descripción) */}
+  <main className="max-w-2xl mx-[10%] px-4 ">
+    <h1 className="text-sm font-normal mb-4">{product.name}</h1>
+    <p className="text-gray-700 text-justify mb-6 text-xs font-normal">{product.description}</p>
+
+    {/* Carrusel o galería */}
+    <div className="w-full max-w-md mx-auto mt-6">
+      {/* Mobile */}
+      <div className=" lg:hidden block w-full max-w-md mx-auto overflow-hidden rounded-md shadow-sm h-[200px]">
+        <ProductMobileSlideshow images={product.images} title={product.title} />
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden md:block h-[200px]">
+        <ProductSlideshow images={product.images} title={product.title} />
+      </div>
+    </div>
+  </main>
+</>
+
   );
-}
+}  
