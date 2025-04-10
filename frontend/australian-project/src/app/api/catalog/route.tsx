@@ -5,39 +5,17 @@ const mockProducts = [
     id: 1,
     slug: "orthopedic-neck-pillow",
     name: "Orthopedic Neck Pillow",
-    description:
-      "Butterfly-shaped cervical pillow designed to support natural neck curvature and relieve pressure while sleeping.",
+    description: "Butterfly-shaped cervical pillow designed to support natural neck curvature and relieve pressure while sleeping.",
     price: 89000,
-    membershipPrice: 85000,
+    priceWithMembership: 85000,
     deliveryTime: 3,
     colors: [
-      {
-        name: "White",
-        hex: "#FFFFFF",
-        images: [
-          "/imgs/products/1473809-00-A_1_2000.jpg",
-          "/imgs/products/1473809-00-A_alt.jpg"
-        ]
-      },
-      {
-        name: "Gray",
-        hex: "#A9A9A9",
-        images: [
-          "/imgs/products/1473814-00-A_1_2000.jpg",
-          "/imgs/products/1473814-00-A_alt.jpg"
-        ]
-      },
-      {
-        name: "Blue",
-        hex: "#87CEEB",
-        images: [
-          "/imgs/products/1473819-00-A_1_2000.jpg",
-          "/imgs/products/1473824-00-A_2_2000.jpg"
-        ]
-      }
+      { name: "White", hex: "#FFFFFF", images: ["/images/pillow-white-1.png", "/images/pillow-white-2.png"] },
+      { name: "Gray", hex: "#A9A9A9", images: ["/images/pillow-gray-1.png", "/images/pillow-gray-2.png"] },
+      { name: "Blue", hex: "#87CEEB", images: ["/images/pillow-blue-1.png", "/images/pillow-blue-2.png"] },
     ],
     sizes: ["One Size"],
-    tags: ["pillow", "neck", "cervical", "support"]
+    tags: ["pillow", "neck", "cervical", "support"],
   },
   {
     id: 2,
@@ -45,7 +23,7 @@ const mockProducts = [
     name: "Lumbar Support Cushion",
     description: "Memory foam lumbar cushion that promotes healthy posture and reduces lower back pain when sitting.",
     price: 72000,
-    membershipPrice: 68000,
+    priceWithMembership: 68000,
     deliveryTime: 4,
     colors: [
       { name: "Black", hex: "#000000", images: ["/images/lumbar-black-1.png"] },
@@ -61,7 +39,7 @@ const mockProducts = [
     name: "Knee Support Brace",
     description: "Ergonomic knee brace for joint stability, pain relief, and injury prevention during movement.",
     price: 45000,
-    membershipPrice: 42000,
+    priceWithMembership: 42000,
     deliveryTime: 2,
     colors: [
       { name: "Black", hex: "#000000", images: ["/images/knee-black-1.png"] },
@@ -77,7 +55,7 @@ const mockProducts = [
     name: "Wrist Compression Sleeve",
     description: "Breathable wrist sleeve providing gentle compression for tendonitis, carpal tunnel, and joint pain.",
     price: 38000,
-    membershipPrice: 35000,
+    priceWithMembership: 35000,
     deliveryTime: 3,
     colors: [
       { name: "Black", hex: "#000000", images: ["/images/wrist-black-1.png"] },
@@ -93,7 +71,7 @@ const mockProducts = [
     name: "Orthopedic Seat Cushion",
     description: "Coccyx seat cushion for tailbone relief and proper spinal alignment while sitting.",
     price: 95000,
-    membershipPrice: 90000,
+    priceWithMembership: 90000,
     deliveryTime: 5,
     colors: [
       { name: "Gray", hex: "#808080", images: ["/images/seat-gray-1.png"] },
@@ -109,7 +87,7 @@ const mockProducts = [
     name: "Posture Corrector",
     description: "Adjustable back posture corrector designed to align the spine and improve shoulder posture.",
     price: 67000,
-    membershipPrice: 63000,
+    priceWithMembership: 63000,
     deliveryTime: 2,
     colors: [
       { name: "Black", hex: "#000000", images: ["/images/posture-black-1.png"] },
@@ -125,7 +103,7 @@ const mockProducts = [
     name: "Ankle Support Wrap",
     description: "Flexible and lightweight ankle wrap to stabilize joints and prevent injuries.",
     price: 39000,
-    membershipPrice: 36000,
+    priceWithMembership: 36000,
     deliveryTime: 3,
     colors: [
       { name: "Black", hex: "#000000", images: ["/images/ankle-black-1.png"] },
@@ -141,7 +119,7 @@ const mockProducts = [
     name: "Orthopedic Slippers",
     description: "Comfortable orthopedic slippers with arch support and anti-slip soles.",
     price: 78000,
-    membershipPrice: 74000,
+    priceWithMembership: 74000,
     deliveryTime: 4,
     colors: [
       { name: "Brown", hex: "#8B4513", images: ["/images/slippers-brown-1.png"] },
@@ -157,7 +135,7 @@ const mockProducts = [
     name: "Cervical Traction Device",
     description: "Inflatable traction collar for cervical decompression and neck tension relief.",
     price: 102000,
-    membershipPrice: 97000,
+    priceWithMembership: 97000,
     deliveryTime: 5,
     colors: [
       { name: "Navy", hex: "#000080", images: ["/images/traction-navy-1.png"] },
@@ -173,7 +151,7 @@ const mockProducts = [
     name: "Orthopedic Mattress Pad",
     description: "Pressure-relieving orthopedic mattress pad designed for spine support and comfort.",
     price: 185000,
-    membershipPrice: 175000,
+    priceWithMembership: 175000,
     deliveryTime: 6,
     colors: [
       { name: "White", hex: "#FFFFFF", images: ["/images/mattress-white-1.png"] },
@@ -181,29 +159,32 @@ const mockProducts = [
       { name: "Blue", hex: "#ADD8E6", images: ["/images/mattress-blue-1.png"] },
     ],
     sizes: ["Twin", "Full", "Queen", "King"],
-    tags: ["mattress", "orthopedic", "pad", "bed"],
-  },
+    tags: ["mattress", "orthopedic", "pad", "bed"],
+  },
 ];
 
-type ContextType = {
-  params: {
-    slug: string;
-  };
-};
+// Función GET para obtener los productos filtrados
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const search = searchParams.get('search')?.toLowerCase() || '';
 
-export async function GET(req: Request, context: ContextType) {
-  const { slug } = context.params;
-  
+  // Filtramos los productos que contengan el texto de búsqueda
+  const filtered = mockProducts.filter(product =>
+    product.name.toLowerCase().includes(search)
+  );
 
-  const product = mockProducts.find((p) => p.slug === slug);
-
-  if (!product) {
-    return NextResponse.json({ message: 'Producto no encontrado' }, { status: 404 });
-  }
-
-  return NextResponse.json(product);
-
+  // Respondemos con la lista filtrada en formato JSON
+  return NextResponse.json(filtered);
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -230,4 +211,3 @@ export async function GET(req: Request, context: ContextType) {
 //   // Respondemos con la lista filtrada en formato JSON
 //   return NextResponse.json(filtered);
 // }
-
