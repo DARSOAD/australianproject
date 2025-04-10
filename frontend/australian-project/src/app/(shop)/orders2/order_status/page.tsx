@@ -43,7 +43,7 @@ export default function OrderStatusPage() {
 
 
           <div className="hidden lg:block text-gray-400 lg:ml-48 text-xs ">
-            <p>Your name</p>
+            <p>Your order</p>
           </div>
 
         {/* PRODUCTOS*/}
@@ -101,7 +101,7 @@ export default function OrderStatusPage() {
           {/* Cupon de descuentos */}
           <div className="w-full lg:flex lg:justify-end">
             <div className="w-full bg-gray-50 shadow-md px-4 py-2 text-xs text-gray-700 mb-5 mt-4
-              flex flex-row lg:flex-row lg:items-center lg:justify-between lg:w-[50%] rounded-l-full">
+              flex flex-row lg:flex-row lg:items-center lg:justify-between lg:w-[50%] rounded-l-full lg:mt-8">
 
               <span className="text-gray-500 ml-7 ">Offers</span>
 
@@ -122,8 +122,8 @@ export default function OrderStatusPage() {
                   </div>
                   
         {/*SUBTOTAL /TOAL */}
-          <div className="w-[90%] lg:flex lg:justify-end ">
-            <div className="w-full lg:w-fulls lg:mr-20 ">
+          <div className="w-[95%] lg:flex lg:justify-end ">
+            <div className="w-full lg:w-fulls lg:mr- ">
               <OrderSummary />
             </div>
           </div>

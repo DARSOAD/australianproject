@@ -38,7 +38,7 @@ export default function OrderForm() {
       <form onSubmit={handleSubmit} className="space-y-8">
   
         {/* Dirección y búsqueda - responsive */}
-        <div className="w-full flex flex-col lg:flex-row gap-4">
+        <div className="w-full flex flex-col lg:flex-row gap-4 " >
           
           <div className="lg:w-2/5 lg:mt-7">
             <AddressField address={address} setAddress={setAddress} />
