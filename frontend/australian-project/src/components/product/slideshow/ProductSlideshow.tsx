@@ -44,8 +44,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                             width={1024}
                             height={800}
                             src={`/products/${image}`}
-                            alt={title}
-                            className="rounded-lg object-fill"
+                            alt="Product image"
+                             className="w-full h-full object-cover rounded-lg"         
                             priority={index === 0} // Añadir prioridad solo a la primera imagen
                         />
                     </SwiperSlide>
@@ -66,8 +66,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                             width={300}
                             height={300}
                             src={`/products/${image}`}
-                            alt={title}
-                            className="rounded-lg object-fill"
+                            alt="Product image"
+                            className="w-full h-full object-cover rounded-lg"
                             priority={index === 0} // Añadir prioridad solo a la primera imagen
                         />
                     </SwiperSlide>

@@ -1,11 +1,5 @@
-import {ProductMobileSlideshow} from "@/components/product/slideshow/ProductMobileSlideshow";
-import {ProductSlideshow} from "@/components/product/slideshow/ProductSlideshow";
-import { QuantitySelector, SizeSelector } from "@/components";
-import { Searchbar } from "@/components/ui/searchInput/Searchbar";
-import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProductClient } from "./ProductClient"; // Importa el componente visual interactivo
 
 interface Props {
   params: {
@@ -13,6 +7,7 @@ interface Props {
   };
 }
 
+// Obtiene el producto desde tu API
 async function getProduct(slug: string) {
   try {
     const res = await fetch(`http://localhost:3000/api/catalog/${slug}`, {
@@ -28,6 +23,7 @@ async function getProduct(slug: string) {
   }
 }
 
+// Componente principal de la página de producto
 export default async function ProductPage({ params }: Props) {
   const { slug } = params;
   const product = await getProduct(slug);
@@ -36,36 +32,5 @@ export default async function ProductPage({ params }: Props) {
     notFound();
   }
 
-  const images = product?.colors?.[0]?.images || [];
-
-  return (
-    <>
-      {/* ENCABEZADO */}
-      <div className="hidden lg:block">
-        <div className="flex w-full py-8 items-center justify-between">
-          {/* Botón */}
-          <div className="flex-1 pr-4">
-            <button className="btn-primary w-full !rounded-r-full !rounded-l-none ml-auto">
-              <Link href="/">Best deals with membership</Link>
-            </button>
-          </div>
-
-          {/* Searchbar */}
-          <div className="flex-1 pl-4">
-            <Searchbar />
-          </div>
-        </div>
-      </div>
-
-      {/* Carrusel del producto móvil */}
-      <div className="lg:hidden">
-        <ProductMobileSlideshow images={images} />
-      </div>
-
-      {/* Carrusel del producto pc */}
-      <div className="hidden lg:block px-28">
-        <ProductSlideshow images={images} />
-      </div>
-    </>
-  );
+  return <ProductClient product={product} />;
 }

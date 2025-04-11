@@ -7,13 +7,13 @@ const mockProducts = [
     name: "Orthopedic Neck Pillow",
     description:
       "Butterfly-shaped cervical pillow designed to support natural neck curvature and relieve pressure while sleeping.",
-    price: 89000,
-    membershipPrice: 85000,
+    price: 30.28,
+    membershipPrice: 23.05,
     deliveryTime: 3,
     colors: [
       {
-        name: "White",
-        hex: "#FFFFFF",
+        name: "Red",
+        hex: "#FF0000",
         images: [
           "/imgs/products/1473809-00-A_1_2000.jpg",
           "/imgs/products/1473809-00-A_alt.jpg"
@@ -36,7 +36,7 @@ const mockProducts = [
         ]
       }
     ],
-    sizes: ["One Size"],
+    sizes: ['8','9','10','11','12'],
     tags: ["pillow", "neck", "cervical", "support"]
   },
   {
@@ -100,7 +100,7 @@ const mockProducts = [
       { name: "Purple", hex: "#800080", images: ["/images/seat-purple-1.png"] },
       { name: "Dark Green", hex: "#006400", images: ["/images/seat-green-1.png"] },
     ],
-    sizes: ["One Size"],
+    sizes: ["S", "M", "L", "XL"],
     tags: ["seat", "cushion", "spine", "posture"],
   },
   {
@@ -148,7 +148,7 @@ const mockProducts = [
       { name: "Gray", hex: "#A9A9A9", images: ["/images/slippers-gray-1.png"] },
       { name: "Pink", hex: "#FFB6C1", images: ["/images/slippers-pink-1.png"] },
     ],
-    sizes: ["36", "37", "38", "39", "40"],
+    sizes: ["S", "M", "L", "XL"],
     tags: ["slippers", "foot", "orthopedic", "comfort"],
   },
   {
@@ -164,7 +164,7 @@ const mockProducts = [
       { name: "Gray", hex: "#D3D3D3", images: ["/images/traction-gray-1.png"] },
       { name: "Maroon", hex: "#800000", images: ["/images/traction-maroon-1.png"] },
     ],
-    sizes: ["One Size"],
+    sizes: ["S", "M", "L", "XL"],
     tags: ["cervical", "neck", "traction", "device"],
   },
   {
@@ -180,7 +180,7 @@ const mockProducts = [
       { name: "Gray", hex: "#C0C0C0", images: ["/images/mattress-gray-1.png"] },
       { name: "Blue", hex: "#ADD8E6", images: ["/images/mattress-blue-1.png"] },
     ],
-    sizes: ["Twin", "Full", "Queen", "King"],
+    sizes: ["S", "M", "L", "XL"],
     tags: ["mattress", "orthopedic", "pad", "bed"],
   },
 ];
