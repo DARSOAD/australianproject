@@ -11,6 +11,7 @@ import { titleFont } from "@/config/fonts";
 import { AddToCartSection } from "@/components/product/AddToCartSection/AddToCartSection";
 import { ProductReviewSummary } from "@/components/product/ProductReviewSummary/ProductReviewSummary";
 import { SimilarProducts } from "@/components/product/SimilarProducts/SimilarProducts";
+import { FaCircleInfo } from "react-icons/fa6";
 
 
 
@@ -59,6 +60,7 @@ export function ProductClient({ product }: { product: any }) {
             {/* COMENTARIOS Y NOMBRE DEL PRODUCTO */}
             <ProductReviewSummary
               productName={product.name}
+              slug={product.slug}
               reviewsCount={52}
               rating={4.9}
               avatars={[
@@ -68,7 +70,9 @@ export function ProductClient({ product }: { product: any }) {
                 "/imgs/users/u4.jpg",
                 "/imgs/users/u5.jpg",
               ]}
+              
             />
+
           </div>
 
           {/* COLUMNA DERECHA: DETALLES DEL PRODUCTO */}
