@@ -17,12 +17,18 @@ export const ProductReviewSummary: React.FC<Props> = ({
   avatars,
 }) => {
   return (
-    <div className="space-y-2 mt-6">
+    <div className="space-y-2 mt-6 text-center">
+       
+     <span className="font-normal text-gray-500">Rehanb</span> 
+          
       {/* Nombre del producto */}
-      <h1 className="text-2xl font-bold">{productName}</h1>
-      <span className="bg-red-600"><FaCircleInfo />   </span>
+      <div className="flex items-center gap-2 mt-2 justify-center">
+      
+        <h1 className="text-xm font-semibold ">{productName}</h1>
+        <FaCircleInfo className="text-red-600 text-xl cursor-pointer" />
+        </div>
       {/* Línea de reviews */}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
         {/* Avatares */}
         <div className="flex -space-x-2">
           {avatars.slice(0, 4).map((src, index) => (
@@ -39,7 +45,7 @@ export const ProductReviewSummary: React.FC<Props> = ({
             </div>
           )}
         </div>
-<span className="hidden sm:inline-block">|</span>
+<span className="hidden sm:inline-block ">|</span>
         {/* Texto de reviews */}
         <div className="text-sm text-gray-600 flex flex-col sm:flex-row sm:gap-4">
           <p>

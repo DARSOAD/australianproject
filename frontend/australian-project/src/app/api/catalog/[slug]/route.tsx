@@ -6,33 +6,33 @@ const mockProducts = [
     slug: "orthopedic-neck-pillow",
     name: "Orthopedic Neck Pillow",
     description:
-      "Butterfly-shaped cervical pillow designed to support natural neck curvature and relieve pressure while sleeping.",
+      "Neck support pillow with unique butterfly shape and hollow design. Contours to the body's natural curve better than regular pillows. Features a hollow center and neck massage points that conform to the neck and shoulders for effective cervical spine support, stretch, and relaxation for side, back, and stomach sleepers, helping you fall asleep quickly!",
     price: 30.28,
     membershipPrice: 23.05,
     deliveryTime: 3,
     colors: [
       {
-        name: "Red",
-        hex: "#FF0000",
+        name: "white",
+        hex: "#b49d98",
         images: [
-          "/imgs/products/1473809-00-A_1_2000.jpg",
-          "/imgs/products/1473809-00-A_alt.jpg"
+          "/products/1473809-00-A_1_2000.jpg",
+          "/products/1473809-00-A_alt.jpg"
         ]
       },
       {
         name: "Gray",
         hex: "#A9A9A9",
         images: [
-          "/imgs/products/1473814-00-A_1_2000.jpg",
-          "/imgs/products/1473814-00-A_alt.jpg"
+          "/products/1473814-00-A_1_2000.jpg",
+          "/products/1473814-00-A_alt.jpg"
         ]
       },
       {
-        name: "Blue",
-        hex: "#87CEEB",
+        name: "red",
+        hex: "#c41313",
         images: [
-          "/imgs/products/1473819-00-A_1_2000.jpg",
-          "/imgs/products/1473824-00-A_2_2000.jpg"
+          "/products/1473819-00-A_1_2000.jpg",
+          "/products/1473819-00-A_alt_2000.jpg"
         ]
       }
     ],

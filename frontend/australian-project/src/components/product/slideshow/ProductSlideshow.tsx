@@ -40,14 +40,17 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={image}>
-                        <Image
-                            width={1024}
-                            height={800}
-                            src={`/products/${image}`}
-                            alt="Product image"
-                             className="w-full h-full object-cover rounded-lg"         
-                            priority={index === 0} // Añadir prioridad solo a la primera imagen
-                        />
+                       <div className="mx-auto max-h-[500px] w-auto relative aspect-auto">
+                    <Image
+                        src={image}
+                        alt="Product image"
+                        width={600} // puedes ajustar esto si quieres que sea más pequeño
+                        height={0} // Next.js lo necesita aunque sea 0
+                        className="object-contain rounded-lg"
+                        priority={index === 0}
+                    />
+                    </div>
+
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -65,9 +68,9 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                         <Image
                             width={300}
                             height={300}
-                            src={`/products/${image}`}
+                            src={image}
                             alt="Product image"
-                            className="w-full h-full object-cover rounded-lg"
+                            className="w-full h-full  object-cover rounded-lg"
                             priority={index === 0} // Añadir prioridad solo a la primera imagen
                         />
                     </SwiperSlide>

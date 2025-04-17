@@ -21,7 +21,8 @@ export const ColorSelector: React.FC<Props> = ({ colors, selectedColor, onColorC
         Select Color
       </h3>
 
-<div className="flex items-center justify-center gap-6 overflow-x-auto overflow-y-hidden no-scrollbar px-4 py-4">
+      <div className="flex items-center justify-center gap-8 overflow-x-auto overflow-y-hidden no-scrollbar px-4 py-4">
+
         {colors.map((color) => {
           const isSelected = color.name === selectedColor;
 

@@ -28,37 +28,41 @@ export const AddToCartSection: React.FC<Props> = ({ price, membershipPrice, onAd
   const installment = (price / 4).toFixed(2);
 
   return (
-    <div className="space-y-3">
-      {/* Botón curvo y contenido */}
-      <div className="flex items-center justify-between bg-green-500 text-white px-4 py-3 rounded-full w-full hover:bg-green-600 transition">
-        <div className="flex items-center gap-2">
-          <button onClick={onAddToCart} className="text-xm font-medium lg:ml-6">
-            Add to Cart
-          </button>
-          <span className="text-xl font-semibold lg:ml-2">|</span>
-          <span className="text-base font-semibold lg:ml-4">${price.toFixed(2)}</span>
-        </div>
+    <div className="space-y-3 flex flex-col items-center">
+    <div className="inline-flex items-center bg-green-500 text-white px-4 py-3 rounded-full hover:bg-green-600 transition gap-4">  
+    <button onClick={onAddToCart} className="text-xm font-medium">
+      Add to Cart
+    </button>
 
-        {/* Precio con membership */}
-        <div className="bg-green-700 rounded-full px-3 py-1 text-sm font-medium text-white">
-          Price membership: ${membershipPrice.toFixed(2)}
-        </div>
-      </div>
+    {/* Separador */}
+    <span className="text-xl font-semibold">|</span>
 
-      {/* Detalles abajo */}
-      <div className="text-sm text-gray-600 text-center flex flex-col sm:flex-row justify-center gap-2">
-        <p>
-          <span className="text-gray-400">Delivery:</span>{" "}
-          <span className="font-medium">{formattedRange}</span>
-        </p>
-        <span className="hidden sm:inline-block">|</span>
-        
-        <p>
-            <span className="text-gray-400">Plan:</span>{" "}
-          <span className="font-medium">${installment} /4</span>
-        </p>
-        <span><SiAfterpay /></span>
+    {/* Precio + precio membership juntos */}
+    <div className="flex items-center gap-2">
+      <span className="text-base font-semibold">${price.toFixed(2)}</span>
+
+      <div className="bg-green-700 rounded-full px-3 py-1 text-sm font-medium text-white">
+        Price membership: ${membershipPrice.toFixed(2)}
       </div>
     </div>
+  </div>
+
+  {/* Detalles de abajo */}
+  <div className="text-sm text-gray-600 text-center flex flex-col sm:flex-row  gap-2">
+    <p>
+      <span className="text-gray-400">Delivery:</span>{" "}
+      <span className="font-medium">{formattedRange}</span>
+    </p>
+    <span className="hidden sm:inline-block">|</span>
+    <p>
+      <span className="text-gray-400">Plan:</span>{" "}
+      <span className="font-medium">${installment} /4</span>
+    </p>
+    <span>
+      <SiAfterpay />
+    </span>
+  </div>
+</div>
+
   );
 };

@@ -47,7 +47,7 @@ export function ProductClient({ product }: { product: any }) {
           
           {/* COLUMNA IZQUIERDA: SLIDESHOW + REVIEWS */}
           <div className="w-full lg:w-1/2 space-y-4">
-            <div className="h-[400px] overflow-hidden rounded-lg">
+            <div className="max-h-[500px] overflow-hidden rounded-lg">
               <div className="hidden lg:block">
                 <ProductSlideshow images={images} />
               </div>
@@ -72,7 +72,7 @@ export function ProductClient({ product }: { product: any }) {
           </div>
 
           {/* COLUMNA DERECHA: DETALLES DEL PRODUCTO */}
-          <div className="w-full lg:w-1/2 space-y-4 lg:mt-24">
+          <div className="w-full lg:w-1/2 space-y-4 lg:mt-20">
             {/* Tallas disponibles */}
             {product.sizes?.length > 0 && (
               <SizeSelector
@@ -89,9 +89,12 @@ export function ProductClient({ product }: { product: any }) {
               onColorChange={setSelectedColor}
             />
 
-            <div className="h-6" />
+            <div className="h-16" />
 
             {/* Botón de compra */}
+
+
+
             <AddToCartSection
               price={product.price}
               membershipPrice={product.membershipPrice}
@@ -105,10 +108,15 @@ export function ProductClient({ product }: { product: any }) {
             />
 
             {/* Descripción del producto */}
-            <p className="text-xs text-gray-600">{product.description}</p>
+           <p className="text-xs text-black">{product.name}</p>
+            <p className="text-xs text-gray-400">{product.description}</p>
           </div>
         </div>
-        
+        <div className="w-full flex justify-center">
+          <SimilarProducts products={[product, product, product, product, product]} />
+        </div>
+
+
       </div>
     </>
   );
