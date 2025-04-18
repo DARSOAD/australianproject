@@ -54,7 +54,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <Swiper
+            {/* <Swiper
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={4}
@@ -75,7 +75,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
                         />
                     </SwiperSlide>
                 ))}
-            </Swiper>
+            </Swiper> */}
         </div>
     );
 };
