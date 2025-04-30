@@ -26,7 +26,7 @@ export default async function InfoPage({ params }: Props) {
   const textoInferior = product.descripcionLarga.slice(maxLength);
 
   return (
-    <div className="w-full p-4 min-h-screen">
+    <div className="w-full p-4 min-h-screen px-6">
       {/* 🟦 ENCABEZADO SOLO EN DESKTOP */}
       <div className="hidden lg:block">
         <div className="flex w-full py-8 items-center justify-between">
@@ -43,6 +43,7 @@ export default async function InfoPage({ params }: Props) {
 
       {/* ✅ SOLO EN MÓVILES */}
       <div className="block lg:hidden mt-8 space-y-4">
+        {/* Imagen */}
         <div className="flex justify-center">
           <Image
             src={mainImage}
@@ -52,13 +53,22 @@ export default async function InfoPage({ params }: Props) {
             className="rounded-lg object-contain"
           />
         </div>
+
+        {/* Título */}
         <h2 className="text-2xl font-semibold">{product.name}</h2>
+
+        {/* Descripción corta */}
         <p className="text-gray-700 leading-relaxed whitespace-pre-line">
           {product.description}
         </p>
+
+        {/* ✅ Carrusel visible también en móvil */}
+        <div className="mt-4">
+          <ProductSlideshow images={images} title={product.name} />
+        </div>
       </div>
 
-      {/* ✅ EN PANTALLAS GRANDES CON COLUMNA VACÍA EN EL CENTRO */}
+      {/* ✅ EN PANTALLAS GRANDES */}
       <div className="hidden lg:grid grid-cols-5 gap-8 max-w-[1300px] mx-auto mt-12">
         {/* 🖼️ Columna izquierda: Imagen + descripción larga inferior */}
         <div className="col-span-2 flex flex-col items-start justify-start">
@@ -76,7 +86,7 @@ export default async function InfoPage({ params }: Props) {
           </div>
         </div>
 
-        {/* 🕳️ COLUMNA VACÍA CENTRAL (1/5) */}
+        {/* 🕳️ COLUMNA VACÍA CENTRAL */}
         <div className="col-span-1" />
 
         {/* 📄 Columna derecha: título + descripción + carrusel */}

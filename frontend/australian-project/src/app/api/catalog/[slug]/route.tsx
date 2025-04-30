@@ -33,7 +33,7 @@ const mockProducts = [
         hex: "#c41313",
         images: [
           "/products/1473819-00-A_1_2000.jpg",
-          "/products/1473819-00-A_alt_2000.jpg"
+          "/products/1473819-00-A_alt.jpg"
         ]
       }
     ],
